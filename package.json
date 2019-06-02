@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "echo:nojekyll": "touch ./docs/.nojekyll",
+    "echo": "npm-run-all -p echo:nojekyll",
+    "copy:html": "cp ./src/index.html ./docs",
+    "copy:js": "cp ./src/js/main.js ./docs/js",
+    "copy:images": "cp -r ./src/images ./docs",
+    "copy": "npm-run-all -p copy:*",
+    "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/js/elm.js",
+    "watch:sass": "node-sass --include-path sass ./src/sass/style.sass ./docs/css/style.css --watch --quiet",
+    "watch": "npm-run-all -p watch:*",
+    "start": "npm-run-all -s echo copy watch"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.5",
+    "elm": "^0.19.0-bugfix6",
+    "elm-live": "^3.4.1",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {}
+}
