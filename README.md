@@ -23,7 +23,18 @@ $ npm run build
 
 ## npm scripts
 
+package.json has some scripts:  
+`copy`, `watch`, `compile`, `build` and `start`.
+
+You can customize those scripts.
+
+#### Cross platform
+`npm-run-all` and `ncp` works on Windows as well.
+
+
 ### copy
+
+Run every `copy:*` at the same time.
 
 ```
 "copy:html": "ncp ./src/index.html ./docs",
@@ -34,13 +45,17 @@ $ npm run build
 
 ### watch
 
+Run every `watch:*` at the same time.
+
 ```
 "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
 "watch:sass": "node-sass --include-path scss ./src/style.scss ./docs/style.css --watch --quiet",
 "watch": "npm-run-all -p watch:*",
 ```
 
-### copy
+### compile
+
+Run every `compile:*` at the same time.
 
 ```
 "compile:elm": "elm make src/elm/Main.elm --output=./docs/elm.js",
@@ -50,11 +65,15 @@ $ npm run build
 
 ### build
 
+Run `echo`, `copy` and `compile` sequentially.
+
 ```
 "build": "npm-run-all -s echo copy compile",
 ```
 
 ### start
+
+Run `echo`, `copy` and `watch` sequentially.
 
 ```
 "start": "npm-run-all -s echo copy watch"
