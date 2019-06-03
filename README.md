@@ -11,3 +11,11 @@ $ cd elm-startfighter
 $ npm install
 $ npm start
 ```
+
+
+## Build
+
+```
+$ npm run build
+// output "./docs" directory
+```
