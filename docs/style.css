@@ -4,4 +4,5 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif; }
 
 body {
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  background: red; }

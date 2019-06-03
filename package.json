@@ -7,7 +7,7 @@
     "copy:images": "cp -r ./src/images ./docs",
     "copy": "npm-run-all -p copy:*",
     "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
-    "watch:sass": "node-sass --include-path sass ./src/style.sass ./docs/style.css --watch --quiet",
+    "watch:sass": "node-sass --include-path scss ./src/style.scss ./docs/style.css --watch --quiet",
     "watch": "npm-run-all -p watch:*",
     "start": "npm-run-all -s echo copy watch"
   },
