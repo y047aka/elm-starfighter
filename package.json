@@ -4,7 +4,7 @@
     "echo": "npm-run-all -p echo:nojekyll",
     "copy:html": "ncp ./src/index.html ./docs",
     "copy:js": "ncp ./src/main.js ./docs",
-    "copy:images": "ncp ./src/images ./docs",
+    "copy:images": "ncp ./src/images ./docs/images",
     "copy": "npm-run-all -p copy:*",
     "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
     "watch:sass": "node-sass --include-path scss ./src/style.scss ./docs/style.css --watch --quiet",

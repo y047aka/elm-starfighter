@@ -56,7 +56,7 @@ view model =
         [ siteHeader
         , node "main"
             []
-            [ img [ src "/images/Elm_logo.png" ] []
+            [ img [ src "./images/Elm_logo.png" ] []
             ]
         , siteFooter
         ]
