@@ -9,6 +9,10 @@
     "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
     "watch:sass": "node-sass --include-path scss ./src/style.scss ./docs/style.css --watch --quiet",
     "watch": "npm-run-all -p watch:*",
+    "compile:elm": "elm make src/Main.elm --output=./docs/elm.js",
+    "compile:sass": "node-sass --include-path scss ./src/style.scss ./docs/style.css",
+    "compile": "npm-run-all -p compile:*",
+    "build": "npm-run-all -s echo copy compile",
     "start": "npm-run-all -s echo copy watch"
   },
   "devDependencies": {
