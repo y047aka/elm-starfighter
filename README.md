@@ -37,10 +37,10 @@ You can customize those scripts.
 Run every `copy:*` at the same time.
 
 ```
-"copy:html": "ncp ./src/index.html ./docs",
-"copy:js": "ncp ./src/main.js ./docs",
+"copy:html": "ncp ./src/index.html ./docs/index.html",
+"copy:js": "ncp ./src/main.js ./docs/main.js",
 "copy:images": "ncp ./src/images ./docs/images",
-"copy": "npm-run-all -p copy:*",
+"copy": "mkdirp docs && npm-run-all -p copy:*",
 ```
 
 ### watch
@@ -49,7 +49,7 @@ Run every `watch:*` at the same time.
 
 ```
 "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
-"watch:sass": "node-sass --include-path scss ./src/style.scss ./docs/style.css --watch --quiet",
+"watch:sass": "npm run compile:sass && node-sass ./src/style.scss ./docs/style.css -w -q",
 "watch": "npm-run-all -p watch:*",
 ```
 
@@ -59,7 +59,7 @@ Run every `compile:*` at the same time.
 
 ```
 "compile:elm": "elm make src/elm/Main.elm --output=./docs/elm.js",
-"compile:sass": "node-sass --include-path scss ./src/style.scss ./docs/style.css",
+"compile:sass": "node-sass ./src/style.scss ./docs/style.css --output-style compressed",
 "compile": "npm-run-all -p compile:*",
 ```
 
@@ -68,7 +68,7 @@ Run every `compile:*` at the same time.
 Run `echo`, `copy` and `compile` sequentially.
 
 ```
-"build": "npm-run-all -s echo copy compile",
+"build": "npm-run-all -s copy compile",
 ```
 
 ### start
@@ -76,5 +76,5 @@ Run `echo`, `copy` and `compile` sequentially.
 Run `echo`, `copy` and `watch` sequentially.
 
 ```
-"start": "npm-run-all -s echo copy watch"
+"start": "npm-run-all -s copy watch"
 ```
