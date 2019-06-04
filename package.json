@@ -2,7 +2,7 @@
   "scripts": {
     "copy:html": "ncp ./src/index.html ./docs/index.html",
     "copy:js": "ncp ./src/main.js ./docs/main.js",
-    "copy:images": "ncp ./src/images ./docs/images",
+    "copy:assets": "ncp ./src/assets ./docs/assets",
     "copy": "mkdirp docs && npm-run-all -p copy:*",
     "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
     "watch:sass": "npm run compile:sass && node-sass ./src/style.scss ./docs/style.css -w -q",
