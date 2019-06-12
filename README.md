@@ -39,7 +39,7 @@ Run every `copy:*` at the same time.
 ```
 "copy:html": "ncp ./src/index.html ./docs/index.html",
 "copy:js": "ncp ./src/main.js ./docs/main.js",
-"copy:images": "ncp ./src/images ./docs/images",
+"copy:assets": "ncp ./src/assets ./docs/assets",
 "copy": "mkdirp docs && npm-run-all -p copy:*",
 ```
 
@@ -49,7 +49,7 @@ Run every `watch:*` at the same time.
 
 ```
 "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
-"watch:sass": "npm run compile:sass && node-sass ./src/style.scss ./docs/style.css -w -q",
+"watch:sass": "node-sass ./src/style.scss ./docs/style.css && node-sass ./src/style.scss ./docs/style.css -w -q",
 "watch": "npm-run-all -p watch:*",
 ```
 
@@ -65,7 +65,7 @@ Run every `compile:*` at the same time.
 
 ### build
 
-Run `echo`, `copy` and `compile` sequentially.
+Run `copy` and `compile` sequentially.
 
 ```
 "build": "npm-run-all -s copy compile",
@@ -73,7 +73,7 @@ Run `echo`, `copy` and `compile` sequentially.
 
 ### start
 
-Run `echo`, `copy` and `watch` sequentially.
+Run `copy` and `watch` sequentially.
 
 ```
 "start": "npm-run-all -s copy watch"
