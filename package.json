@@ -5,7 +5,7 @@
     "copy:assets": "ncp ./src/assets ./docs/assets",
     "copy": "mkdirp docs && npm-run-all -p copy:*",
     "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
-    "watch:sass": "npm run compile:sass && node-sass ./src/style.scss ./docs/style.css -w -q",
+    "watch:sass": "node-sass ./src/style.scss ./docs/style.css && node-sass ./src/style.scss ./docs/style.css -w -q",
     "watch": "npm-run-all -p watch:*",
     "compile:elm": "elm make src/elm/Main.elm --output=./docs/elm.js",
     "compile:sass": "node-sass ./src/style.scss ./docs/style.css --output-style compressed",
