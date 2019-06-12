@@ -4864,21 +4864,25 @@ var author$project$Main$siteHeader = A2(
 			_List_Nil,
 			_List_fromArray(
 				[
-					elm$html$Html$text('Site Title')
+					elm$html$Html$text('elm-stafighter is taking off.')
 				]))
 		]));
-var elm$html$Html$img = _VirtualDom_node('img');
+var elm$html$Html$a = _VirtualDom_node('a');
+var elm$html$Html$li = _VirtualDom_node('li');
 var elm$virtual_dom$VirtualDom$node = function (tag) {
 	return _VirtualDom_node(
 		_VirtualDom_noScript(tag));
 };
 var elm$html$Html$node = elm$virtual_dom$VirtualDom$node;
-var elm$html$Html$Attributes$src = function (url) {
+var elm$html$Html$section = _VirtualDom_node('section');
+var elm$html$Html$ul = _VirtualDom_node('ul');
+var elm$html$Html$Attributes$href = function (url) {
 	return A2(
 		elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
 };
+var elm$html$Html$Attributes$target = elm$html$Html$Attributes$stringProperty('target');
 var author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
@@ -4891,12 +4895,128 @@ var author$project$Main$view = function (model) {
 				_List_fromArray(
 					[
 						A2(
-						elm$html$Html$img,
+						elm$html$Html$section,
+						_List_Nil,
 						_List_fromArray(
 							[
-								elm$html$Html$Attributes$src('./assets/images/Elm_logo.png')
-							]),
-						_List_Nil)
+								A2(
+								elm$html$Html$h1,
+								_List_Nil,
+								_List_fromArray(
+									[
+										elm$html$Html$text('Elm official...')
+									])),
+								A2(
+								elm$html$Html$ul,
+								_List_Nil,
+								_List_fromArray(
+									[
+										A2(
+										elm$html$Html$li,
+										_List_Nil,
+										_List_fromArray(
+											[
+												A2(
+												elm$html$Html$a,
+												_List_fromArray(
+													[
+														elm$html$Html$Attributes$href('https://elm-lang.org'),
+														elm$html$Html$Attributes$target('_blank')
+													]),
+												_List_fromArray(
+													[
+														elm$html$Html$text('Elm - A delightful language for reliable webapps')
+													]))
+											])),
+										A2(
+										elm$html$Html$li,
+										_List_Nil,
+										_List_fromArray(
+											[
+												A2(
+												elm$html$Html$a,
+												_List_fromArray(
+													[
+														elm$html$Html$Attributes$href('https://guide.elm-lang.org'),
+														elm$html$Html$Attributes$target('_blank')
+													]),
+												_List_fromArray(
+													[
+														elm$html$Html$text('Introduction · An Introduction to Elm')
+													]))
+											]))
+									]))
+							])),
+						A2(
+						elm$html$Html$section,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								elm$html$Html$h1,
+								_List_Nil,
+								_List_fromArray(
+									[
+										elm$html$Html$text('Community in Japan')
+									])),
+								A2(
+								elm$html$Html$ul,
+								_List_Nil,
+								_List_fromArray(
+									[
+										A2(
+										elm$html$Html$li,
+										_List_Nil,
+										_List_fromArray(
+											[
+												A2(
+												elm$html$Html$a,
+												_List_fromArray(
+													[
+														elm$html$Html$Attributes$href('https://elm-lang.jp'),
+														elm$html$Html$Attributes$target('_blank')
+													]),
+												_List_fromArray(
+													[
+														elm$html$Html$text('Elm-jp')
+													]))
+											])),
+										A2(
+										elm$html$Html$li,
+										_List_Nil,
+										_List_fromArray(
+											[
+												A2(
+												elm$html$Html$a,
+												_List_fromArray(
+													[
+														elm$html$Html$Attributes$href('https://guide.elm-lang.jp'),
+														elm$html$Html$Attributes$target('_blank')
+													]),
+												_List_fromArray(
+													[
+														elm$html$Html$text('はじめに · An Introduction to Elm')
+													]))
+											])),
+										A2(
+										elm$html$Html$li,
+										_List_Nil,
+										_List_fromArray(
+											[
+												A2(
+												elm$html$Html$a,
+												_List_fromArray(
+													[
+														elm$html$Html$Attributes$href('http://jinjor-labo.hatenablog.com/entry/2019/02/26/112019'),
+														elm$html$Html$Attributes$target('_blank')
+													]),
+												_List_fromArray(
+													[
+														elm$html$Html$text('『基礎からわかる Elm』（Author\'s post）')
+													]))
+											]))
+									]))
+							]))
 					])),
 				author$project$Main$siteFooter
 			]),
