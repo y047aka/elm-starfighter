@@ -1,7 +1,7 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (Html, div, footer, h1, img, node, p, text)
+import Html exposing (Html, div, footer, h1, header, img, node, p, text)
 import Html.Attributes exposing (class, src)
 
 
@@ -65,7 +65,7 @@ view model =
 
 siteHeader : Html Msg
 siteHeader =
-    Html.header [ class "site-header" ]
+    header [ class "site-header" ]
         [ h1 [] [ text "Site Title" ]
         ]
 
