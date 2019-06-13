@@ -84,7 +84,7 @@ Minify elm.js
 
 ### build
 
-Run `copy` and `compile` sequentially.
+Run `clean`, `copy`, `compile` and `minify:elm` sequentially.
 
 ```
 "build": "npm-run-all -s clean copy compile minify:elm",
@@ -92,7 +92,7 @@ Run `copy` and `compile` sequentially.
 
 ### start
 
-Run `copy` and `watch` sequentially.
+Run `clean`, `copy` and `watch` sequentially.
 
 ```
 "start": "npm-run-all -s clean copy watch"
