@@ -7,7 +7,7 @@
     "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
     "watch:sass": "node-sass ./src/style.scss ./docs/style.css && node-sass ./src/style.scss ./docs/style.css -w -q",
     "watch": "npm-run-all -p watch:*",
-    "compile:elm": "elm make src/elm/Main.elm --output=./docs/elm.js",
+    "compile:elm": "elm make src/elm/Main.elm --optimize --output=./docs/elm.js",
     "compile:sass": "node-sass ./src/style.scss ./docs/style.css --output-style compressed",
     "compile": "npm-run-all -p compile:*",
     "build": "npm-run-all -s copy compile",
