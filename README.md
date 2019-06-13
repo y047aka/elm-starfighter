@@ -23,14 +23,25 @@ $ npm run build
 
 ## npm scripts
 
-package.json has some scripts:  
-`copy`, `watch`, `compile`, `build` and `start`.
+package.json has some scripts:
+
+- `clean`
+- `copy`
+- `watch`
+- `compile`
+- `minify:elm`
+- `build`
+- `start`
 
 You can customize those scripts.
 
-#### Cross platform
-`npm-run-all` and `ncp` works on Windows as well.
+### clean
 
+Remove and make `docs` directory.
+
+```
+"clean": "rimraf ./docs && mkdirp docs",
+```
 
 ### copy
 
@@ -40,7 +51,7 @@ Run every `copy:*` at the same time.
 "copy:html": "ncp ./src/index.html ./docs/index.html",
 "copy:js": "ncp ./src/main.js ./docs/main.js",
 "copy:assets": "ncp ./src/assets ./docs/assets",
-"copy": "mkdirp docs && npm-run-all -p copy:*",
+"copy": " npm-run-all -p copy:*",
 ```
 
 ### watch
@@ -58,9 +69,17 @@ Run every `watch:*` at the same time.
 Run every `compile:*` at the same time.
 
 ```
-"compile:elm": "elm make src/elm/Main.elm --output=./docs/elm.js",
+"compile:elm": "elm make src/elm/Main.elm --optimize --output=./docs/elm.js",
 "compile:sass": "node-sass ./src/style.scss ./docs/style.css --output-style compressed",
 "compile": "npm-run-all -p compile:*",
+```
+
+### minify:elm
+
+Minify elm.js
+
+```
+"minify:elm": "google-closure-compiler --js=./docs/elm.js --js_output_file=./docs/elm.closure.min.js && ncp ./docs/elm.closure.min.js ./docs/elm.js && rm ./docs/elm.closure.min.js",
 ```
 
 ### build
@@ -68,7 +87,7 @@ Run every `compile:*` at the same time.
 Run `copy` and `compile` sequentially.
 
 ```
-"build": "npm-run-all -s copy compile",
+"build": "npm-run-all -s clean copy compile minify:elm",
 ```
 
 ### start
@@ -76,5 +95,8 @@ Run `copy` and `compile` sequentially.
 Run `copy` and `watch` sequentially.
 
 ```
-"start": "npm-run-all -s copy watch"
+"start": "npm-run-all -s clean copy watch"
 ```
+
+## Cross platform
+`ncp`, `npm-run-all` and `rimraf` works on Windows as well.
