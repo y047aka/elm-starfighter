@@ -9,7 +9,7 @@
     "copy:html": "ncp ./src/index.html ./docs/index.html",
     "copy:js": "ncp ./src/main.js ./docs/main.js",
     "copy:assets": "ncp ./src/assets ./docs/assets",
-    "copy": " npm-run-all -p copy:*",
+    "copy": "npm-run-all -p copy:*",
     "watch:elm": "elm-live ./src/elm/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
     "watch:sass": "node-sass ./src/style.scss ./docs/style.css && node-sass ./src/style.scss ./docs/style.css -w -q",
     "watch": "npm-run-all -p watch:*",
