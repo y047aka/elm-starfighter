@@ -49,8 +49,8 @@ Run every `copy:*` at the same time.
 
 ```
 "copy:html": "ncp ./src/index.html ./docs/index.html",
-"copy:js": "ncp ./src/main.js ./docs/main.js",
 "copy:assets": "ncp ./src/assets ./docs/assets",
+"copy:js": "ncp ./src/main.js ./docs/main.js",
 "copy": "npm-run-all -p copy:*",
 ```
 
@@ -59,8 +59,11 @@ Run every `copy:*` at the same time.
 Run every `watch:*` at the same time.
 
 ```
-"watch:elm": "elm-live ./src/Main.elm --open --start-page=index.html --dir=docs -- --output=./docs/elm.js",
-"watch:sass": "node-sass ./src/style.scss ./docs/style.css && node-sass ./src/style.scss ./docs/style.css -w -q",
+"watch:html": "chokidar ./src/*.html -c 'npm-run-all -s copy:html browser-sync' --initial",
+"watch:assets": "chokidar ./src/assets -c 'npm run copy:assets' --initial",
+"watch:js": "chokidar ./src/*.js -c 'npm run copy:js' --initial",
+"watch:elm": "chokidar ./src/*.elm -c 'elm make ./src/Main.elm --output ./docs/elm.js' --initial",
+"watch:sass": "chokidar ./src/*.scss -c 'node-sass ./src/style.scss ./docs/style.css -q' --initial",
 "watch": "npm-run-all -p watch:*",
 ```
 
@@ -92,10 +95,10 @@ Run `clean`, `copy`, `compile` and `minify:elm` sequentially.
 
 ### start
 
-Run `clean`, `copy` and `watch` sequentially.
+Run `clean` and `watch` sequentially.
 
 ```
-"start": "npm-run-all -s clean copy watch"
+"start": "npm-run-all -s clean watch"
 ```
 
 ## Cross platform
