@@ -20,13 +20,10 @@
     "compile:sass": "node-sass ./src/style.scss ./docs/style.css --output-style compressed",
     "compile": "npm-run-all -p compile:*",
     "minify:elm": "google-closure-compiler --js=./docs/elm.js --js_output_file=./docs/elm.closure.min.js && ncp ./docs/elm.closure.min.js ./docs/elm.js && rm ./docs/elm.closure.min.js",
-    "browser-sync": "browser-sync start -s ./docs -f ./docs",
-    "developStyles": "npm-run-all -p watch:sass browser-sync",
     "build": "npm-run-all -s clean copy compile minify:elm",
     "start": "npm-run-all -s clean copy watch"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.7",
     "chokidar": "^3.0.1",
     "chokidar-cli": "^1.2.2",
     "elm": "^0.19.0-no-deps",
