@@ -11,7 +11,7 @@
     "watch:js": "cpx ./src/main.js ./docs -w",
     "watch:elm": "elm-live ./src/Main.elm --open --start-page=index.html --dir=./docs -- --output=./docs/elm.js",
     "watch:sass": "node-sass ./src/style.scss ./docs/style.css && node-sass ./src/style.scss ./docs/style.css -w -q",
-    "watch": "npm run compile:sass && npm-run-all -p watch:*",
+    "watch": "npm-run-all -p watch:*",
     "compile:html": "cpx ./src/index.html ./docs",
     "compile:assets": "cpx \"./src/assets/**/*\" ./docs/assets",
     "compile:js": "cpx ./src/main.js ./docs",
