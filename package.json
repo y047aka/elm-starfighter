@@ -5,8 +5,7 @@
   },
   "license": "CC0-1.0",
   "scripts": {
-    "clean:docs": "rimraf ./docs",
-    "clean:public": "rimraf ./public",
+    "clean": "rimraf ./docs ./public",
     "watch:html": "cpx ./src/index.html ./docs -w",
     "watch:assets": "cpx \"./src/assets/**/*\" ./docs/assets -w",
     "watch:js": "cpx ./src/main.js ./docs -w",
@@ -20,8 +19,8 @@
     "compile:sass": "node-sass ./src/style.scss ./public/style.css --output-style compressed",
     "compile": "npm-run-all -p compile:*",
     "minify:elm": "google-closure-compiler --js=./public/elm.optimized.js --js_output_file=./public/elm.js && rm ./public/elm.optimized.js",
-    "build": "npm-run-all -s clean:public compile minify:elm",
-    "start": "npm-run-all -s clean:docs watch"
+    "build": "npm-run-all -s clean compile minify:elm",
+    "start": "npm-run-all -s clean watch"
   },
   "devDependencies": {
     "cpx": "^1.5.0",
