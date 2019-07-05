@@ -26,7 +26,6 @@ $ npm run build
 package.json has some scripts:
 
 - `clean`
-- `copy`
 - `watch`
 - `compile`
 - `minify:elm`
@@ -37,21 +36,10 @@ You can customize those scripts.
 
 ### clean
 
-Remove and make `docs` directory.
+Remove `docs` directory.
 
 ```
-"clean": "rimraf ./docs && mkdirp docs",
-```
-
-### copy
-
-Run every `copy:*` at the same time.
-
-```
-"copy:html": "ncp ./src/index.html ./docs/index.html",
-"copy:assets": "ncp ./src/assets ./docs/assets",
-"copy:js": "ncp ./src/main.js ./docs/main.js",
-"copy": "npm-run-all -p copy:*",
+"clean": "rimraf ./docs",
 ```
 
 ### watch
@@ -59,11 +47,11 @@ Run every `copy:*` at the same time.
 Run every `watch:*` at the same time.
 
 ```
-"watch:html": "chokidar ./src/*.html -c 'npm-run-all -s copy:html browser-sync' --initial",
-"watch:assets": "chokidar ./src/assets -c 'npm run copy:assets' --initial",
-"watch:js": "chokidar ./src/*.js -c 'npm run copy:js' --initial",
-"watch:elm": "chokidar ./src/*.elm -c 'elm make ./src/Main.elm --output ./docs/elm.js' --initial",
-"watch:sass": "chokidar ./src/*.scss -c 'node-sass ./src/style.scss ./docs/style.css -q' --initial",
+"watch:html": "cpx ./src/index.html ./docs -w",
+"watch:assets": "cpx \"./src/assets/**/*\" ./docs/assets -w",
+"watch:js": "cpx ./src/main.js ./docs -w",
+"watch:elm": "elm-live ./src/Main.elm --open --start-page=index.html --dir=./docs -- --output=./docs/elm.js",
+"watch:sass": "node-sass ./src/style.scss ./docs/style.css && node-sass ./src/style.scss ./docs/style.css -w -q",
 "watch": "npm-run-all -p watch:*",
 ```
 
@@ -72,25 +60,28 @@ Run every `watch:*` at the same time.
 Run every `compile:*` at the same time.
 
 ```
-"compile:elm": "elm make ./src/Main.elm --optimize --output=./docs/elm.js",
+"compile:html": "cpx ./src/index.html ./docs",
+"compile:assets": "cpx \"./src/assets/**/*\" ./docs/assets",
+"compile:js": "cpx ./src/main.js ./docs",
+"compile:elm": "elm make ./src/Main.elm --optimize --output=./docs/elm.optimized.js",
 "compile:sass": "node-sass ./src/style.scss ./docs/style.css --output-style compressed",
 "compile": "npm-run-all -p compile:*",
 ```
 
 ### minify:elm
 
-Minify elm.js
+Minify elm.optimized.js to elm.js
 
 ```
-"minify:elm": "google-closure-compiler --js=./docs/elm.js --js_output_file=./docs/elm.closure.min.js && ncp ./docs/elm.closure.min.js ./docs/elm.js && rm ./docs/elm.closure.min.js",
+"minify:elm": "google-closure-compiler --js=./docs/elm.optimized.js --js_output_file=./docs/elm.js && rm ./docs/elm.optimized.js",
 ```
 
 ### build
 
-Run `clean`, `copy`, `compile` and `minify:elm` sequentially.
+Run `clean`, `compile` and `minify:elm` sequentially.
 
 ```
-"build": "npm-run-all -s clean copy compile minify:elm",
+"build": "npm-run-all -s clean compile minify:elm",
 ```
 
 ### start
@@ -102,4 +93,4 @@ Run `clean` and `watch` sequentially.
 ```
 
 ## Cross platform
-`ncp`, `npm-run-all` and `rimraf` works on Windows as well.
+`cpx`, `npm-run-all` and `rimraf` works on Windows as well.
