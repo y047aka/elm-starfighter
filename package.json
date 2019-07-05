@@ -5,7 +5,7 @@
   },
   "license": "CC0-1.0",
   "scripts": {
-    "clean": "rimraf ./docs && mkdirp docs",
+    "clean": "rimraf ./docs",
     "copy:html": "cpx ./src/index.html ./docs",
     "copy:assets": "cpx \"./src/assets/**/*\" ./docs/assets",
     "copy:js": "cpx ./src/main.js ./docs",
@@ -21,7 +21,7 @@
     "compile": "npm-run-all -p compile:*",
     "minify:elm": "google-closure-compiler --js=./docs/elm.js --js_output_file=./docs/elm.closure.min.js && ncp ./docs/elm.closure.min.js ./docs/elm.js && rm ./docs/elm.closure.min.js",
     "build": "npm-run-all -s clean copy compile minify:elm",
-    "start": "npm-run-all -s clean copy watch"
+    "start": "npm-run-all -s clean watch"
   },
   "devDependencies": {
     "cpx": "^1.5.0",
