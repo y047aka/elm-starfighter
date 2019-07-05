@@ -26,17 +26,19 @@ package.json has some scripts:
 
 You can customize those scripts.
 
-### Cross platform
+#### Cross platform
 `cpx`, `npm-run-all` and `rimraf` works on Windows as well.
 
 
-## start
+## npm start
 
 Run `clean` and `watch` sequentially.
 
 ```
 "start": "npm-run-all -s clean watch"
 ```
+
+The name of output directory is "docs".
 
 ### clean
 
@@ -60,13 +62,15 @@ Run every `watch:*` at the same time.
 ```
 
 
-## build
+## npm run build
 
 Run `clean`, `compile` and `minify:elm` sequentially.
 
 ```
 "build": "npm-run-all -s clean compile minify:elm",
 ```
+
+The name of output directory is "public".
 
 ### compile
 
