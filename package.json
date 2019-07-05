@@ -16,10 +16,10 @@
     "watch:elm": "elm-live ./src/Main.elm --open --start-page=index.html --dir=./docs -- --output=./docs/elm.js",
     "watch:sass": "node-sass ./src/style.scss ./docs/style.css && node-sass ./src/style.scss ./docs/style.css -w -q",
     "watch": "npm run compile:sass && npm-run-all -p watch:*",
-    "compile:elm": "elm make ./src/Main.elm --optimize --output=./docs/elm.js",
+    "compile:elm": "elm make ./src/Main.elm --optimize --output=./docs/elm.optimized.js",
     "compile:sass": "node-sass ./src/style.scss ./docs/style.css --output-style compressed",
     "compile": "npm-run-all -p compile:*",
-    "minify:elm": "google-closure-compiler --js=./docs/elm.js --js_output_file=./docs/elm.closure.min.js && ncp ./docs/elm.closure.min.js ./docs/elm.js && rm ./docs/elm.closure.min.js",
+    "minify:elm": "google-closure-compiler --js=./docs/elm.optimized.js --js_output_file=./docs/elm.js && rm ./docs/elm.optimized.js",
     "build": "npm-run-all -s clean copy compile minify:elm",
     "start": "npm-run-all -s clean watch"
   },
