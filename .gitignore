@@ -3,3 +3,6 @@ node_modules
 
 # Elm Dependency directory
 elm-stuff
+
+# Default directory at "npm run build"
+public
