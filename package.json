@@ -10,26 +10,28 @@
     "watch:assets": "cpx \"./src/assets/**/*\" ./docs/assets -w",
     "watch:js": "cpx ./src/main.js ./docs -w",
     "watch:elm": "elm-live ./src/Main.elm --open --start-page=index.html --dir=./docs -- --output=./docs/elm.js",
-    "watch:sass": "node-sass ./src/style.scss ./docs/style.css && node-sass ./src/style.scss ./docs/style.css -w -q",
-    "watch": "npm-run-all -p watch:*",
+    "watch:sass": "chokidar ./src/*.scss -c \"sass ./src/style.scss ./docs/style.css --no-source-map\" --initial",
+    "watch": "sass ./src/style.scss ./docs/style.css --no-source-map && npm-run-all -p watch:*",
     "compile:html": "cpx ./src/index.html ./public",
     "compile:assets": "cpx \"./src/assets/**/*\" ./public/assets",
     "compile:js": "cpx ./src/main.js ./public",
     "compile:elm": "elm make ./src/Main.elm --optimize --output=./public/elm.optimized.js",
-    "compile:sass": "node-sass ./src/style.scss ./public/style.css --output-style compressed",
+    "compile:sass": "sass ./src/style.scss ./public/style.css --no-source-map -s compressed",
     "compile": "npm-run-all -p compile:*",
     "minify:elm": "google-closure-compiler --js=./public/elm.optimized.js --js_output_file=./public/elm.js && rm ./public/elm.optimized.js",
     "build": "npm-run-all -s clean compile minify:elm",
     "start": "npm-run-all -s clean watch"
   },
   "devDependencies": {
+    "chokidar": "^3.0.2",
+    "chokidar-cli": "^1.2.2",
     "cpx": "^1.5.0",
     "elm": "^0.19.0-no-deps",
     "elm-live": "^3.4.1",
     "elm-test": "^0.19.0-rev6",
     "google-closure-compiler": "^20190528.0.0",
-    "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "sass": "^1.22.3"
   }
 }
