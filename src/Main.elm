@@ -5,6 +5,7 @@ import Html exposing (Html, a, footer, h1, header, img, li, node, p, section, te
 import Html.Attributes exposing (class, href, src, target)
 
 
+main : Program () Model Msg
 main =
     Browser.document
         { init = init
