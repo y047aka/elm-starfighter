@@ -7,7 +7,7 @@ import Html.Attributes exposing (class, href, src, target)
 
 main : Program () Model Msg
 main =
-    Browser.document
+    Browser.element
         { init = init
         , update = update
         , view = view
@@ -50,10 +50,10 @@ update msg model =
 -- VIEW
 
 
-view : Model -> Browser.Document Msg
+view : Model -> Html Msg
 view model =
-    { title = "Elm 0.19 starter"
-    , body =
+    node "body"
+        []
         [ siteHeader
         , node "main"
             []
@@ -92,7 +92,6 @@ view model =
             ]
         , siteFooter
         ]
-    }
 
 
 siteHeader : Html Msg
