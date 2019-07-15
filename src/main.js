@@ -1,5 +1,3 @@
 window.onload = () => {
-  Elm.Main.init({
-    node: document.body
-  })
+  Elm.Main.init()
 }
