@@ -18,7 +18,7 @@
     "compile:elm": "elm make ./src/Main.elm --optimize --output=./public/elm.optimized.js",
     "compile:sass": "sass ./src/style.scss ./public/style.css --no-source-map -s compressed",
     "compile": "npm-run-all -p compile:*",
-    "minify:elm": "google-closure-compiler --js=./public/elm.optimized.js --js_output_file=./public/elm.js && rm ./public/elm.optimized.js",
+    "minify:elm": "google-closure-compiler --js=./public/elm.optimized.js --js_output_file=./public/elm.js && rimraf ./public/elm.optimized.js",
     "build": "npm-run-all -s clean compile minify:elm",
     "start": "npm-run-all -s clean watch",
     "test": "elm-test"
