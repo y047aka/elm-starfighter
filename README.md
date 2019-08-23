@@ -45,7 +45,7 @@ The name of output directory is "docs".
 Remove `docs` and `public` directory.
 
 ```
-"clean": "rimraf ./docs ./public",
+"clean": "rimraf docs public"
 ```
 
 ### watch
@@ -53,12 +53,12 @@ Remove `docs` and `public` directory.
 Run every `watch:*` at the same time.
 
 ```
-"watch:html": "cpx ./src/index.html ./docs -w",
-"watch:assets": "cpx \"./src/assets/**/*\" ./docs/assets -w",
-"watch:js": "cpx ./src/main.js ./docs -w",
-"watch:elm": "elm-live ./src/Main.elm --open --start-page=index.html --dir=./docs -- --output=./docs/elm.js",
-"watch:sass": "node-sass ./src/style.scss ./docs/style.css && node-sass ./src/style.scss ./docs/style.css -w -q",
-"watch": "npm-run-all -p watch:*",
+"watch:html": "cpx -w src/index.html docs",
+"watch:assets": "cpx -w \"src/assets/**/*\" docs/assets",
+"watch:js": "cpx -w src/main.js docs",
+"watch:elm": "elm-live src/Main.elm --open --start-page=index.html --dir=docs -- --output=docs/elm.js",
+"watch:sass": "sass --watch src:docs",
+"watch": "sass src:docs && npm-run-all -p watch:*"
 ```
 
 
@@ -77,11 +77,11 @@ The name of output directory is "public".
 Run every `compile:*` at the same time.
 
 ```
-"compile:html": "cpx ./src/index.html ./public",
-"compile:assets": "cpx \"./src/assets/**/*\" ./public/assets",
-"compile:js": "cpx ./src/main.js ./public",
-"compile:elm": "elm make ./src/Main.elm --optimize --output=./public/elm.optimized.js",
-"compile:sass": "node-sass ./src/style.scss ./public/style.css --output-style compressed",
+"compile:html": "cpx src/index.html public",
+"compile:assets": "cpx \"src/assets/**/*\" public/assets",
+"compile:js": "cpx src/main.js public",
+"compile:elm": "elm make src/Main.elm --optimize --output=public/elm.optimized.js",
+"compile:sass": "sass --style=compressed --no-source-map src:public"
 "compile": "npm-run-all -p compile:*",
 ```
 
@@ -90,5 +90,5 @@ Run every `compile:*` at the same time.
 Minify elm.optimized.js to elm.js
 
 ```
-"minify:elm": "google-closure-compiler --js=./public/elm.optimized.js --js_output_file=./public/elm.js && rm ./public/elm.optimized.js",
+"minify:elm": "google-closure-compiler --js=public/elm.optimized.js --js_output_file=public/elm.js && rimraf public/elm.optimized.js"
 ```
