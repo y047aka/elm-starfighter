@@ -67,7 +67,7 @@ Run every `watch:*` at the same time.
 Run `clean`, `compile` and `minify:elm` sequentially.
 
 ```
-"build": "npm-run-all -s clean compile minify:elm",
+"build": "npm-run-all -s clean compile minify:elm"
 ```
 
 The name of output directory is "public".
@@ -82,7 +82,7 @@ Run every `compile:*` at the same time.
 "compile:js": "cpx src/main.js public",
 "compile:elm": "elm make src/Main.elm --optimize --output=public/elm.optimized.js",
 "compile:sass": "sass --style=compressed --no-source-map src:public"
-"compile": "npm-run-all -p compile:*",
+"compile": "npm-run-all -p compile:*"
 ```
 
 ### minify:elm
