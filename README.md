@@ -91,5 +91,6 @@ Run every `compile:*` at the same time.
 Minify elm.optimized.js to elm.js
 
 ```
-"minify:elm": "google-closure-compiler --js=public/elm.optimized.js --js_output_file=public/elm.js && rimraf public/elm.optimized.js"
+"minify:elm": "google-closure-compiler --js=public/elm.optimized.js --js_output_file=public/elm.js",
+"postminify:elm": "rimraf public/elm.optimized.js"
 ```

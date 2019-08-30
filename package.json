@@ -19,7 +19,8 @@
     "compile:elm": "elm make src/Main.elm --optimize --output=public/elm.optimized.js",
     "compile:sass": "sass --style=compressed --no-source-map src:public",
     "compile": "npm-run-all -p compile:*",
-    "minify:elm": "google-closure-compiler --js=public/elm.optimized.js --js_output_file=public/elm.js && rimraf public/elm.optimized.js",
+    "minify:elm": "google-closure-compiler --js=public/elm.optimized.js --js_output_file=public/elm.js",
+    "postminify:elm": "rimraf public/elm.optimized.js",
     "build": "npm-run-all -s clean compile minify:elm",
     "start": "npm-run-all -s clean watch",
     "test": "elm-test"
