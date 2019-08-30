@@ -58,7 +58,8 @@ Run every `watch:*` at the same time.
 "watch:js": "cpx -w src/main.js docs",
 "watch:elm": "elm-live src/Main.elm --open --start-page=index.html --dir=docs -- --output=docs/elm.js",
 "watch:sass": "sass --watch src:docs",
-"watch": "sass src:docs && npm-run-all -p watch:*"
+"watch": "npm-run-all -p watch:*",
+"prewatch": "sass src:docs"
 ```
 
 
