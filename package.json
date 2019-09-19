@@ -12,7 +12,7 @@
     "watch:elm": "elm-live src/Main.elm --open --start-page=index.html --dir=docs -- --output=docs/elm.js",
     "watch:sass": "sass --watch src:docs",
     "watch": "npm-run-all -p watch:*",
-    "prewatch": "sass src:docs",
+    "prewatch": "cpx src/index.html docs && sass src:docs",
     "compile:html": "cpx src/index.html public",
     "compile:assets": "cpx \"src/assets/**/*\" public/assets",
     "compile:js": "cpx src/main.js public",
@@ -28,7 +28,7 @@
   "devDependencies": {
     "cpx": "^1.5.0",
     "elm": "0.19.0-bugfix6",
-    "elm-live": "3.4.0",
+    "elm-live": "^4.0.0",
     "elm-test": "^0.19.0-rev6",
     "google-closure-compiler": "^20190819.0.0",
     "npm-run-all": "^4.1.5",
