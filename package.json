@@ -12,7 +12,7 @@
     "watch:elm": "elm-live src/Main.elm --open --start-page=index.html --dir=docs -- --output=docs/elm.js",
     "watch:sass": "sass --watch src:docs",
     "watch": "npm-run-all -p watch:*",
-    "prewatch": "sass src:docs",
+    "prewatch": "cpx src/index.html docs && sass src:docs",
     "compile:html": "cpx src/index.html public",
     "compile:assets": "cpx \"src/assets/**/*\" public/assets",
     "compile:js": "cpx src/main.js public",
