@@ -9,7 +9,8 @@
     "watch:html": "cpx -w src/index.html docs",
     "watch:assets": "cpx -w \"src/assets/**/*\" docs/assets",
     "watch:js": "cpx -w src/main.js docs",
-    "watch:elm": "elm-live src/Main.elm --open --start-page=index.html --dir=docs -- --output=docs/elm.js",
+    "watch:elm-live": "elm-live src/Main.elm --open --start-page=index.html --dir=docs -- --output=docs/elm.js",
+    "watch:elm-format": "chokidar src/*.elm -c \"elm-format --yes src/\" --initial",
     "watch:sass": "sass --watch src:docs",
     "watch": "npm-run-all -p watch:*",
     "prewatch": "sass src:docs",
@@ -26,6 +27,7 @@
     "test": "elm-test"
   },
   "devDependencies": {
+    "chokidar-cli": "^2.1.0",
     "cpx2": "^2.0.0",
     "elm": "^0.19.1-3",
     "elm-format": "^0.8.2",
