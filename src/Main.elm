@@ -85,5 +85,5 @@ view model =
                 ]
             ]
 
-        -- , img [ src "./assets/images/Elm_logo.png" ] []
+        -- , img [ src "./static/images/Elm_logo.png" ] []
         ]

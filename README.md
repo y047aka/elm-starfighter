@@ -52,7 +52,7 @@ Run every `watch:*` at the same time.
 
 ```
 "watch:html": "cpx -w src/index.html docs",
-"watch:assets": "cpx -w \"src/assets/**/*\" docs/assets",
+"watch:static": "cpx -w \"src/static/**/*\" docs/static",
 "watch:js": "cpx -w src/main.js docs",
 "watch:elm": "elm-live src/Main.elm --open --start-page=index.html --dir=docs -- --output=docs/elm.js",
 "watch:sass": "sass --watch src:docs",
@@ -76,7 +76,7 @@ Run every `compile:*` at the same time.
 
 ```
 "compile:html": "cpx src/index.html public",
-"compile:assets": "cpx \"src/assets/**/*\" public/assets",
+"compile:static": "cpx \"src/static/**/*\" public/static",
 "compile:js": "cpx src/main.js public",
 "compile:elm": "elm make src/Main.elm --optimize --output=public/elm.optimized.js",
 "compile:sass": "sass --style=compressed --no-source-map src:public",
