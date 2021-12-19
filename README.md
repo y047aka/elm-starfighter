@@ -15,7 +15,7 @@ $ npm start
 
 `cpx2` and `rimraf` works on Windows as well.
 
-## Start (`npm start` or `make start`
+## Start (`npm start` or `make start`)
 
 Run `clean` and `watch` sequentially.
 The name of output directory is "docs".
