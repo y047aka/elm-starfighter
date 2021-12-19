@@ -11,83 +11,16 @@ $ npm install
 $ npm start
 ```
 
-## npm scripts
-
-package.json has some scripts:
-
-- `clean`
-- `watch`
-- `compile`
-- `minify:elm`
-- `build`
-- `start`
-
-You can customize those scripts.
-
 #### Cross platform
 
-`cpx2`, `npm-run-all` and `rimraf` works on Windows as well.
+`cpx2` and `rimraf` works on Windows as well.
 
-## npm start
+## Start (`npm start` or `make start`
 
 Run `clean` and `watch` sequentially.
-
-```
-"start": "npm-run-all -s clean watch"
-```
-
 The name of output directory is "docs".
 
-### clean
+## Build (`npm run build` or `make build`)
 
-Remove `docs` and `public` directory.
-
-```
-"clean": "rimraf docs public"
-```
-
-### watch
-
-Run every `watch:*` at the same time.
-
-```
-"watch:html": "cpx -w src/index.html docs",
-"watch:static": "cpx -w \"src/static/**/*\" docs/static",
-"watch:js": "cpx -w src/main.js docs",
-"watch:elm": "elm-live src/Main.elm --open --start-page=index.html --dir=docs -- --output=docs/elm.js",
-"watch:sass": "sass --watch src:docs",
-"watch": "npm-run-all -p watch:*",
-"prewatch": "sass src:docs"
-```
-
-## npm run build
-
-Run `clean`, `compile` and `minify:elm` sequentially.
-
-```
-"build": "npm-run-all -s clean compile minify:elm"
-```
-
+Run `clean` and compile sequentially.
 The name of output directory is "public".
-
-### compile
-
-Run every `compile:*` at the same time.
-
-```
-"compile:html": "cpx src/index.html public",
-"compile:static": "cpx \"src/static/**/*\" public/static",
-"compile:js": "cpx src/main.js public",
-"compile:elm": "elm make src/Main.elm --optimize --output=public/elm.optimized.js",
-"compile:sass": "sass --style=compressed --no-source-map src:public",
-"compile": "npm-run-all -p compile:*"
-```
-
-### minify:elm
-
-Minify elm.optimized.js to elm.js
-
-```
-"minify:elm": "google-closure-compiler --js=public/elm.optimized.js --js_output_file=public/elm.js",
-"postminify:elm": "rimraf public/elm.optimized.js"
-```
