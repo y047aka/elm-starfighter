@@ -17,10 +17,10 @@ $ npm start
 
 ## Start (`npm start` or `make start`)
 
-Run `clean` and `watch` sequentially.
+Run `clean` and `watch` sequentially.  
 The name of output directory is "docs".
 
 ## Build (`npm run build` or `make build`)
 
-Run `clean` and compile sequentially.
+Run `clean` and compile sequentially.  
 The name of output directory is "public".
